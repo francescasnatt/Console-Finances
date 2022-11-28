@@ -1,6 +1,6 @@
 var finances = [
 ['Jan-2010', 867884],
-['Feb-2010', 984655],
+['Feb-2010', 984655], //(984655-867884)= 116771
 ['Mar-2010', 322013],
 ['Apr-2010', -69417],
 ['May-2010', 310503],
@@ -91,31 +91,42 @@ var finances = [
 console.log("Financial Analysis");
 console.log("----------------");
 
-// The total number of months included in the dataset.
+// The total number of months included in the dataset.✅
     var totalMonths = finances.length;
     console.log("Total Months: " + totalMonths);
 
 
-// The net total amount of Profit/Losses over the entire period.
+// The net total amount of Profit/Losses over the entire period.✅
     var sumProfits = 0;
 
-    for (var i = 0; i < finances.length; i++) {
-        var currentMonth = finances[i];
-        var currentProfits = currentMonth[1];
-        // console.log(currentProfits);
+    for (let i = 0; i < finances.length; i++) {
+        let currentMonth = finances[i][0];
+        let currentProfits = finances[i][1];
         sumProfits = sumProfits + currentProfits;
         }
 
-    console.log("Total Months: " + sumProfits);
+    console.log("Total: $" + sumProfits);
 
 
-// The average of the changes in Profit/Losses over the entire period.
+// The average of the changes in Profit/Losses over the entire period.✅
     // You will need to track what the total change in profits are from month to month and then find the average.
     // (Total/Number of months)
+        var totalVariance = 0;
 
+        for (var i = 1; i < finances.length; i++){
+        let currentProfits = finances[i][1];
+        let prevProfits = finances[i-1][1];
+        let currentVariance = currentProfits - prevProfits;
+        totalVariance = totalVariance + currentVariance;
+        }
+
+        var averageVariance = totalVariance/(finances.length-1);
+        var averageVarianceDecimal = averageVariance.toFixed(2); 
+        console.log("Average Change: $" + averageVarianceDecimal);
 
 
 // The greatest increase in profits (date and amount) over the entire period.
+
 
 
 // The greatest decrease in losses (date and amount) over the entire period.
