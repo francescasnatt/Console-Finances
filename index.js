@@ -99,9 +99,9 @@ console.log("----------------");
 // The net total amount of Profit/Losses over the entire period.✅
     var sumProfits = 0;
 
-    for (let i = 0; i < finances.length; i++) {
-        let currentMonth = finances[i][0];
-        let currentProfits = finances[i][1];
+    for (var i = 0; i < finances.length; i++) {
+        var currentMonth = finances[i][0];
+        var currentProfits = finances[i][1];
         sumProfits = sumProfits + currentProfits;
         }
 
@@ -113,10 +113,10 @@ console.log("----------------");
     // (Total/Number of months)
         var totalVariance = 0;
 
-        for (var i = 1; i < finances.length; i++){
-        let currentProfits = finances[i][1];
-        let prevProfits = finances[i-1][1];
-        let currentVariance = currentProfits - prevProfits;
+        for (var x = 1; x < finances.length; x++){
+        var currentProfits = finances[x][1];
+        var prevProfits = finances[x-1][1];
+        var currentVariance = currentProfits - prevProfits;
         totalVariance = totalVariance + currentVariance;
         }
 
@@ -126,7 +126,21 @@ console.log("----------------");
 
 
 // The greatest increase in profits (date and amount) over the entire period.
+    var currentLargestVariance = 0;
+
+    for (var y = 0; y < currentVariance.length; y++){
+        if (currentVariance > currentLargestVariance){
+            currentLargestVariance = currentVariance;
+            var largestVarianceMonth = finances[y][0];
+        }
+    }
+
+    console.log(largestVarianceMonth);
+    console.log(currentLargestVariance);
+
+    console.log("Greatest Increase in Profits: " + largestVarianceMonth + " ($ " + currentLargestVariance + ")");
 
 
+    // console.log("Greatest Increase in Profits: " + largestVarianceMonth + currentLargestVariance);
 
 // The greatest decrease in losses (date and amount) over the entire period.
