@@ -125,22 +125,35 @@ console.log("----------------");
         console.log("Average Change: $" + averageVarianceDecimal);
 
 
-// The greatest increase in profits (date and amount) over the entire period.
+// The greatest increase in profits (date and amount) over the entire period.✅
     var currentLargestVariance = 0;
 
-    for (var y = 0; y < currentVariance.length; y++){
+    for (var y = 1; y < finances.length; y++){
+        var currentProfits = finances[y][1];
+        var prevProfits = finances[y-1][1];
+        var currentVariance = currentProfits - prevProfits;
+        
         if (currentVariance > currentLargestVariance){
             currentLargestVariance = currentVariance;
             var largestVarianceMonth = finances[y][0];
         }
     }
 
-    console.log(largestVarianceMonth);
-    console.log(currentLargestVariance);
-
     console.log("Greatest Increase in Profits: " + largestVarianceMonth + " ($ " + currentLargestVariance + ")");
 
 
-    // console.log("Greatest Increase in Profits: " + largestVarianceMonth + currentLargestVariance);
+// The greatest decrease in losses (date and amount) over the entire period.✅
+var currentLargestVariance = 0;
 
-// The greatest decrease in losses (date and amount) over the entire period.
+    for (var y = 1; y < finances.length; y++){
+        var currentProfits = finances[y][1];
+        var prevProfits = finances[y-1][1];
+        var currentVariance = currentProfits - prevProfits;
+        
+        if (currentVariance < currentLargestVariance){
+            currentLargestVariance = currentVariance;
+            var largestVarianceMonth = finances[y][0];
+        }
+    }
+
+    console.log("Greatest Decrease in Profits: " + largestVarianceMonth + " ($ " + currentLargestVariance + ")");
